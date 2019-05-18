@@ -41,5 +41,5 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         return new InMemoryUserDetailsManager(user);
     }
-    //TODO: opportunity to add new users
+    //TODO: opportunity to add new users, and leave ADMIN user here (above) or some another approach
 }
