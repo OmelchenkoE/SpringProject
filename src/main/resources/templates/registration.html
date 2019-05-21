@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Registration</title>
 </head>
 <body>
 <h1>Registration</h1>
-<form action=""> <!--TODO:-->
-    <p>Name <input type="text"></p>
-    <p>password <input type="password"></p>
+<form action="#" th:action="@{/users}" th:object="${user}" method="post">
+    <p>Name <input type="text" th:field="*{name}"></p>
+    <p>password <input type="password" th:field="*{password}"></p>
    <p><input type="submit" value="Submit"></p>
 </form>
 </body>

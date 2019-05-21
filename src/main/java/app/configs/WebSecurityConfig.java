@@ -35,11 +35,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         UserDetails user =
                 User.withDefaultPasswordEncoder()
                         .username("user")
-                        .password("password")
+                        .password("p")
                         .roles("USER")
                         .build();
 
         return new InMemoryUserDetailsManager(user);
     }
-    //TODO: opportunity to add new users, and leave ADMIN user here (above) or some another approach
+
+    //TODO: save new users, and adjust permissions
 }
