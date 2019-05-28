@@ -18,7 +18,7 @@ import javax.sql.DataSource;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-/*    @Override
+   /*@Override
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
@@ -41,8 +41,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         auth
                 .jdbcAuthentication()
                 .dataSource(dataSource)
-                //.passwordEncoder(NoOpPasswordEncoder.getInstance()) //TODO
-                .usersByUsernameQuery("select name, password from user where name=?")
+                .passwordEncoder(NoOpPasswordEncoder.getInstance()) //TODO
+                .usersByUsernameQuery("select name, password, active from user where name=?")
         .authoritiesByUsernameQuery("select u.name, r.roles from user u inner join roles r on u.id=r.id where u.name=?");
     }
 }

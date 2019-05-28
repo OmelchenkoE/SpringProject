@@ -1,6 +1,4 @@
-package app.users;
-
-import org.springframework.boot.autoconfigure.web.ResourceProperties;
+package app.domain;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -16,6 +14,15 @@ public class User {
     private int id;
     private String name;
     private String password;
+    private boolean active;
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
 
     public int getId() {
         return id;
@@ -33,13 +40,6 @@ public class User {
         this.roles = roles;
     }
 
-    @ElementCollection(targetClass = Roles.class, fetch = FetchType.EAGER)
-    @CollectionTable(name = "roles", joinColumns = @JoinColumn(name = "id"))
-    @Enumerated(EnumType.STRING)
-    private Set<Roles> roles;
-    //salt = id+password
-
-
     public String getName() {
         return name;
     }
@@ -55,4 +55,11 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    @ElementCollection(targetClass = Roles.class, fetch = FetchType.EAGER)
+    @CollectionTable(name = "roles", joinColumns = @JoinColumn(name = "id"))
+    @Enumerated(EnumType.STRING)
+    private Set<Roles> roles;
+    //salt = id+password
+
 }

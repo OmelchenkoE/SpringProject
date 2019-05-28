@@ -7,5 +7,12 @@
 </head>
 <body>
 <h1>Welcome!</h1>
+<p>Click <a th:href="@{/users}">users</a> to see all users</p>
+<p>Click <a th:href="@{/index}">back</a> to go back</p>
+<div>
+    <form action="/logout" method="post">
+        <input type="submit" value="log out"/>
+    </form>
+</div>
 </body>
 </html>
