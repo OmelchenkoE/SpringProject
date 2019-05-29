@@ -1,5 +1,6 @@
 package app.configs;
 
+import app.domain.Roles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,21 +19,6 @@ import javax.sql.DataSource;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-   /*@Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http
-                .authorizeRequests()
-                    .antMatchers("/registration","/")
-                    .permitAll()
-                    .anyRequest()
-                    .authenticated()
-                .and()
-                    .formLogin()
-                    .permitAll()
-                .and()
-                    .logout()
-                    .permitAll();
-    }*/
     @Autowired
     private DataSource dataSource;
 
@@ -41,7 +27,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         auth
                 .jdbcAuthentication()
                 .dataSource(dataSource)
-                .passwordEncoder(NoOpPasswordEncoder.getInstance()) //TODO
+                .passwordEncoder(NoOpPasswordEncoder.getInstance())
                 .usersByUsernameQuery("select name, password, active from user where name=?")
         .authoritiesByUsernameQuery("select u.name, r.roles from user u inner join roles r on u.id=r.id where u.name=?");
     }

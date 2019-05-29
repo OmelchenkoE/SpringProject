@@ -7,11 +7,25 @@
 <body>
 <h1>Registration</h1>
 <form action="#" th:action="@{/users}" th:object="${user}" method="post">
-    <p>Name <input type="text" th:field="*{name}"></p>
-    <p>password <input type="password" th:field="*{password}"></p>
-   <p><input type="submit" value="Submit"></p>
+    <p>Name:
+        <input type="text" th:field="*{name}">
+    </p>
+    <p>Password:
+        <input type="password" th:field="*{password}">
+    </p>
+    <p>Role:
+        <select th:field="*{roles}">
+            <option th:each="state : ${T(app.domain.Roles).values()}"
+                    th:value="${state}"
+                    th:text="${state}">
+            </option>
+
+        </select>
+    </p>
+    <p><input type="submit" value="Submit"></p>
 </form>
 <p>Click <a th:href="@{/home}">home</a> to see a greeting.</p>
 <p>Click <a th:href="@{/users}">users</a> to see all users</p>
+<p>Click <a th:href="@{/remove}">remove</a> to remove user</p>
 </body>
 </html>

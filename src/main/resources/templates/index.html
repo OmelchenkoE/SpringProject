@@ -10,5 +10,11 @@
 <p>Click <a th:href="@{/home}">home</a> to see a greeting.</p>
 <p>Click <a th:href="@{/registration}">registration</a> to add new user</p>
 <p>Click <a th:href="@{/users}">users</a> to see all users</p>
+<p>Click <a th:href="@{/remove}">remove</a> to remove user</p>
+<div>
+    <form action="#" th:action="@{/logout}" method="post">
+        <input type="submit" value="log out"/>
+    </form>
+</div>
 </body>
 </html>

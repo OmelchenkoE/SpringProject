@@ -7,15 +7,23 @@
 <body>
 <h1>There are all users:</h1>
 <table>
-    <tr>
-        <th>USER NAME</th>
-    </tr>
-    <tr th:each="user: ${userList}">
-        <td th:text="${user.name}"/>
-    </tr>
+    <thead>
+        <tr>
+        <th>ID</th>
+        <th>NAME</th>
+        <!--<th>ROLE</th>-->
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="user: ${userList}">
+            <td th:text="${user.id}"/>
+            <td th:text="${user.name}"/>
+        </tr>
+    </tbody>
 </table>
 <br>
 <p>Click <a th:href="@{/home}">home</a> to see a greeting.</p>
 <p>Click <a th:href="@{/registration}">registration</a> to add new user</p>
+<p>Click <a th:href="@{/remove}">remove</a> to remove user</p>
 </body>
 </html>
