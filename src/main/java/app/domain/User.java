@@ -18,6 +18,7 @@ public class User {
     private String name;
     private String password;
     private boolean active;
+    private BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
     public boolean isActive() {
         return active;
@@ -56,7 +57,6 @@ public class User {
     }
 
     public void setPassword(String password) {
-        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         this.password = encoder.encode(password);
     }
 
