@@ -1,5 +1,6 @@
 package app.controllers;
 
+import app.repos.MessageRepo;
 import app.repos.UserRepo;
 import app.domain.Roles;
 import app.domain.User;
@@ -16,7 +17,6 @@ public class MainController {
 
     @Autowired
     private UserRepo userRepo;
-
 
     @GetMapping("/")//used
     public String usersFormGet() {
