@@ -25,7 +25,6 @@ public class MessageController {
 
     @PostMapping("/messages")
     public String postMassage(@AuthenticationPrincipal User user, Message message, Model model) {
-        //message.setAuthor(user.getName());
         messageRepo.save(message);
         model.addAttribute("messageList", messageRepo.findAll());
         return "messages";
