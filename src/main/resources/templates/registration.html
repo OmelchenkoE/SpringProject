@@ -14,13 +14,12 @@
         <input type="password" th:field="*{password}">
     </p>
     <p>Role:
-        <select th:field="*{roles}">
-            <option th:each="state : ${T(app.domain.Roles).values()}"
-                    th:value="${state}"
-                    th:text="${state}">
-            </option>
-
-        </select>
+    <ul th:each="roles: ${rolesList}">
+        <li>
+            <input type="checkbox" th:field="*{roles}" th:value="${roles}">
+            <label th:text="${roles}"></label>
+        </li>
+    </ul>
     </p>
     <p><input type="submit" value="Submit"></p>
 </form>

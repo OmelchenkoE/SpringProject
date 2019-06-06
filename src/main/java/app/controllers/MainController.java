@@ -33,7 +33,7 @@ public class MainController {
     @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping("/registration")//used
     public String usersFormGet1(User user, Model model) {
-        model.addAttribute("roles", Roles.values());
+        model.addAttribute("rolesList", Roles.values());
         model.addAttribute("user", user);
         return "registration";
     }
