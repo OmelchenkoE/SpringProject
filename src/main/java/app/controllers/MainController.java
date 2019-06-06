@@ -18,20 +18,20 @@ public class MainController {
     @Autowired
     private UserRepo userRepo;
 
-    @GetMapping("/")//used
+    @GetMapping("/")
     public String usersFormGet() {
         return "index";
     }
 
     @PreAuthorize("hasAuthority('ADMIN')")
-    @GetMapping("/remove")//used
+    @GetMapping("/remove")
     public String removeUserGet(User user, Model model) {
         model.addAttribute("user", user);
         return "remove";
     }
 
     @PreAuthorize("hasAuthority('ADMIN')")
-    @GetMapping("/registration")//used
+    @GetMapping("/registration")
     public String usersFormGet1(User user, Model model) {
         model.addAttribute("rolesList", Roles.values());
         model.addAttribute("user", user);
@@ -65,7 +65,7 @@ public class MainController {
         return "remove";
     }
 
-    @GetMapping("/users")//used
+    @GetMapping("/users")
     public String userList(Model model) {
         model.addAttribute("userList", userRepo.findAll());
         return "/users";
