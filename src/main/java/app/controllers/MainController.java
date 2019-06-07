@@ -1,6 +1,5 @@
 package app.controllers;
 
-import app.repos.MessageRepo;
 import app.repos.UserRepo;
 import app.domain.Roles;
 import app.domain.User;
@@ -15,24 +14,29 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class MainController {
 
-    @Autowired
-    private UserRepo userRepo;
+    private static final String ADMIN = "ADMIN";
+
+    private final UserRepo userRepo;
+
+    public MainController(UserRepo userRepo) {
+        this.userRepo = userRepo;
+    }
 
     @GetMapping("/")
     public String usersFormGet() {
         return "index";
     }
 
-    @PreAuthorize("hasAuthority('ADMIN')")
+    @PreAuthorize("hasAuthority('"+ADMIN+"')")
     @GetMapping("/remove")
     public String removeUserGet(User user, Model model) {
         model.addAttribute("user", user);
         return "remove";
     }
 
-    @PreAuthorize("hasAuthority('ADMIN')")
+    @PreAuthorize("hasAuthority('"+ADMIN+"')")
     @GetMapping("/registration")
-    public String usersFormGet1(User user, Model model) {
+    public String addUserFormGet(User user, Model model) {
         model.addAttribute("rolesList", Roles.values());
         model.addAttribute("user", user);
         return "registration";
@@ -43,9 +47,9 @@ public class MainController {
         return "index";
     }
 
-    @PreAuthorize("hasAuthority('ADMIN')")
+    @PreAuthorize("hasAuthority('"+ADMIN+"')")
     @PostMapping("/registration")
-    public String usersFormPost1() {
+    public String addUserPost() {
         return "registration";
     }
 
@@ -58,7 +62,7 @@ public class MainController {
         return "users";
     }
 
-    @PreAuthorize("hasAuthority('ADMIN')")
+    @PreAuthorize("hasAuthority('"+ADMIN+"')")
     @PostMapping("/remove")
     public String removeUser(@ModelAttribute User user) {
         userRepo.deleteById(user.getId());
