@@ -1,9 +1,8 @@
 package app.controllers;
 
-import app.repos.UserRepo;
 import app.domain.Roles;
 import app.domain.User;
-import org.springframework.beans.factory.annotation.Autowired;
+import app.repos.UserRepo;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
