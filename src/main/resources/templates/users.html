@@ -8,16 +8,17 @@
 <h1>There are all users:</h1>
 <table>
     <thead>
-        <tr>
+    <tr>
         <th>ID</th>
         <th>NAME</th>
-        </tr>
+        <!--<th>ROLE</th>-->
+    </tr>
     </thead>
     <tbody>
-        <tr th:each="user: ${userList}">
-            <td th:text="${user.id}"/>
-            <td th:text="${user.name}"/>
-        </tr>
+    <tr th:each="user: ${userList}">
+        <td th:text="${user.id}"/>
+        <td th:text="${user.name}"/>
+    </tr>
     </tbody>
 </table>
 <br>

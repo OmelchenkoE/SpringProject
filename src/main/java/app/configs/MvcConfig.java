@@ -20,5 +20,4 @@ public class MvcConfig implements WebMvcConfigurer {
         registry.addViewController("/remove").setViewName("remove");
         registry.addViewController("/messages").setViewName("messages");
     }
-
 }

@@ -6,9 +6,9 @@
 </head>
 <body>
 <h1>Removing</h1>
-<form action="#" th:action="@{/remove}" th:object="${user}" method="post">
+<form action="#" th:action="@{/remove}" method="post">
     <p>User id:
-        <input type="number" th:field="*{id}">
+        <input type="number" name="id">
     </p>
     <p>
         <input type="submit" value="Remove">

@@ -12,17 +12,16 @@ import javax.sql.DataSource;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-    BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
     @Autowired
     private DataSource dataSource;
 
     @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth
+    protected void configure(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
+        authenticationManagerBuilder
                 .jdbcAuthentication()
                 .dataSource(dataSource)
-                .passwordEncoder(encoder)
+                .passwordEncoder(new BCryptPasswordEncoder())
                 .usersByUsernameQuery("select name, password, active from user where name=?")
-        .authoritiesByUsernameQuery("select u.name, r.roles from user u inner join roles r on u.id=r.id where u.name=?");
+                .authoritiesByUsernameQuery("select u.name, r.roles from user u inner join roles r on u.id=r.id where u.name=?");
     }
 }

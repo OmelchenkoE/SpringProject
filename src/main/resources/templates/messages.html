@@ -8,8 +8,8 @@
 <h1>Messages</h1>
 <form action="#" th:action="@{/messages}" th:object="${message}" method="post">
     <p>Please enter your message:
-        <input type="text" name="msg" th:field="*{msg}">
-      <input type="hidden" name="author"  th:field="*{author}" value="${user.name}">
+        <input type="text" name="text" th:field="*{text}">
+        <input type="hidden" name="author" th:field="*{author}" value="${user.name}">
     </p>
     <p>
         <input type="submit" value="Submit">
@@ -19,12 +19,17 @@
 <table>
     <thead>
     <tr>
+        <!--     <th>ID</th>
+             <th>NAME</th>-->
+
         <th>MESSAGE</th>
     </tr>
     </thead>
     <tbody>
     <tr th:each="message: ${messageList}">
-        <td th:text="${message.msg}"/>
+        <!--      <td th:text="${message.id}"/>
+              <td th:text="${message.author}"/>-->
+        <td th:text="${message.text}"/>
     </tr>
     </tbody>
 </table>
