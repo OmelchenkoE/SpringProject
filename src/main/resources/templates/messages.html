@@ -19,11 +19,16 @@
 <table>
     <thead>
     <tr>
+        <!--     <th>ID</th>
+             <th>NAME</th>-->
+
         <th>MESSAGE</th>
     </tr>
     </thead>
     <tbody>
     <tr th:each="message: ${messageList}">
+        <!--      <td th:text="${message.id}"/>
+              <td th:text="${message.author}"/>-->
         <td th:text="${message.text}"/>
     </tr>
     </tbody>

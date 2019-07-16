@@ -56,4 +56,5 @@ public class UserController {
         model.addAttribute("userList", userServices.readAll());
         return "/users";
     }
+    //TODO: delete Enum and check what happen than
 }

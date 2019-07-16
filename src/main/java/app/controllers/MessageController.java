@@ -19,7 +19,7 @@ public class MessageController {
     private final MessageServices messageServices;
 
     @GetMapping("/messages")
-    public String getMassage(Model model, Message message) {
+    public String getMessage(Model model, Message message) {
         model.addAttribute("message", message);
         model.addAttribute("messageList", messageServices.readAll());
         return "messages";

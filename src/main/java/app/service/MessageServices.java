@@ -3,6 +3,7 @@ package app.service;
 import app.domain.Message;
 import app.repos.MessageRepo;
 import lombok.RequiredArgsConstructor;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +18,7 @@ public class MessageServices {
     private final MessageRepo messageRepo;
 
     public Message create(Message message) {
-        if (message.getText() == null || message.getText().length() < 1) {
+        if (StringUtils.isEmpty(message.getText())) {
             throw new UnsupportedOperationException("Incorrect message");
         }
         messageRepo.save(message);
@@ -26,10 +27,6 @@ public class MessageServices {
 
     public void delete(int id) {
         messageRepo.deleteById(id);
-    }
-
-    public void update(Message message) {
-
     }
 
     public Optional<Message> read(Message message) {
